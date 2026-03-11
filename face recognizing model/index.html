@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Matrix | Real-Time Expression & Pose Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Face Matrix</h1>
+            <p>Real-Time Expression & Pose Analytics</p>
+        </header>
+
+        <main class="dashboard">
+            <div class="video-container glass-panel">
+                <video id="webcam" autoplay playsinline></video>
+                <canvas id="output_canvas"></canvas>
+                <div id="loading" class="overlay">Initializing AI Model...</div>
+            </div>
+
+            <div class="metrics-sidebar glass-panel">
+                <section class="metric-section">
+                    <h2>Primary Expression</h2>
+                    <div id="primary-expression" class="value-highlight">Detecting...</div>
+                    <div class="progress-bar-container">
+                        <div id="expression-accuracy-bar" class="progress-bar" style="width: 0%"></div>
+                    </div>
+                    <div id="expression-accuracy-text" class="accuracy-text">0% Confidence</div>
+                </section>
+
+                <section class="metric-section">
+                    <h2>Head Pose Angles (Euler)</h2>
+                    <div class="angle-grid">
+                        <div class="angle-item">
+                            <span class="angle-label">Pitch (X)</span>
+                            <span id="angle-pitch" class="angle-value">0°</span>
+                        </div>
+                        <div class="angle-item">
+                            <span class="angle-label">Yaw (Y)</span>
+                            <span id="angle-yaw" class="angle-value">0°</span>
+                        </div>
+                        <div class="angle-item">
+                            <span class="angle-label">Roll (Z)</span>
+                            <span id="angle-roll" class="angle-value">0°</span>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="metric-section">
+                    <h2>Top Blendshapes Tracker</h2>
+                    <div id="blendshapes-list" class="blendshapes-container">
+                        <!-- Dynamically populated -->
+                    </div>
+                </section>
+                
+                <button id="enableWebcamButton" class="action-btn">Enable Webcam</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Application Script (ES Module) -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
